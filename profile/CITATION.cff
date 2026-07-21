@@ -1,0 +1,31 @@
+cff-version: 1.2.0
+message: >-
+  If you use Project Kennel, or cite its threat catalogue or design
+  in your own security posture or research, please cite it as below.
+type: software
+title: "Project Kennel: kernel-enforced confinement for unsigned code at the user level"
+abstract: >-
+  A reference monitor for the user level. Kennel runs unvetted code —
+  AI coding agents, package postinstall scripts, freshly-cloned
+  repositories — under the operator's own account, confined to the
+  files, network destinations, and programs a signed policy allows,
+  checked one access at a time. Comprises a threat catalogue with
+  stable IDs, a substrate-neutral design, and an unprivileged Linux
+  runtime composing Landlock, cgroup BPF, seccomp, and namespaces.
+authors:
+  - family-names: "van Mook"
+    given-names: "Remco"
+version: "0.7.1"
+date-released: "2026-07-17"
+license: Apache-2.0
+url: "https://projectkennel.org"
+repository-code: "https://github.com/projectkennel/projectkennel"
+keywords:
+  - sandboxing
+  - confinement
+  - reference monitor
+  - AI agents
+  - Landlock
+  - Linux security
+  - least privilege
+  - supply chain security
