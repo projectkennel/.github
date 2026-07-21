@@ -65,7 +65,7 @@ Machine-readable metadata is in [CITATION.cff](CITATION.cff); GitHub's "Cite thi
 
 ## Who
 
-Kennel is designed and maintained by **[NAME]** ([site/LinkedIn/fediverse links]) — [one line of relevant background, your wording]. Contributions welcome per [CONTRIBUTING.md](.github/CONTRIBUTING.md); there is no CLA.
+Kennel is designed and maintained by **[Remco van Mook]** (https://www.linkedin.com/in/remcovm/) — a 30-year system and network veteran who finds himself yelling "You're holding it wrong!" at clouds a bit too often. Contributions welcome per [CONTRIBUTING.md](.github/CONTRIBUTING.md); there is no CLA.
 
 ## Reporting a vulnerability
 
