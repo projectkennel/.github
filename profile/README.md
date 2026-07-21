@@ -12,6 +12,6 @@ Kennel keeps your uid and splits the authority off it, so the code runs as you w
 
 [The Design and implementation architecture books](https://github.com/projectkennel/books)
 
-[Packages for Ubuntu and Fedora](https://packages.projetkennel.org/)
+[Packages for Ubuntu and Fedora](https://packages.projectkennel.org/)
 
 [Source repo](https://github.com/projectkennel/projectkennel)
