@@ -1,6 +1,18 @@
-# Project Kennel
+# Project Kennel: a boundary for code running as you
 
-**Kennel runs code you haven't vetted — an AI coding agent, an `npm install`, a freshly-cloned repo — under your own user account, confined to just the files, network, and programs a signed policy allows.** The agent that goes off-script, or the postinstall script hunting for credentials, reaches your project and nothing else: not `~/.ssh`, not your other repositories, not the open network.
+The dog is a good boy. Leave him loose in the house while you are out, though, and he may enthusiastically wreck it. A kennel does not decide whether the dog is good. It gives him a safe place to be, with the things he needs, and keeps the rest of the house out of reach.
+
+Project Kennel applies that idea to code running under your user account. An AI agent trying hard to finish a task, an `npm install` script, and a program from an OCI image can all do damage with ordinary user permissions. Kennel does not classify code as benign or malicious, or ask you to predict how it will behave. It confines what that code can reach and do.
+
+Each workload gets a constructed view of the machine. Its policy grants the project files, programs, writable paths, and services needed for the task; other parts of the user’s home are absent. The workload runs as the ordinary user, after Kennel’s construction code has built the view and given up its construction authority. Filesystem controls, seccomp, namespaces, and capability limits reinforce that boundary. A kennel can be created for one task and discarded when the task ends.
+
+Some useful things cannot be supplied as files. Kennel mediates access to them while the workload runs. TCP and UDP egress are constrained by policy and brokered across the kennel’s network boundary. The UDP path answers workload DNS queries locally with synthetic addresses for approved names, so those queries do not leak onto the network. Local sockets and D-Bus access can be granted as specific capabilities.
+
+SSH shows why the distinction between *access* and *authority* matters. A workload that needs to contact a granted host receives a disposable synthetic key for that destination. It never receives the user’s real key or SSH agent socket. A host-side bastion binds the synthetic key to the approved destination and makes the connection with the real key. The workload can perform the granted operation without gaining a general signing capability.
+
+The operator can see how the boundary was drawn. Policies are signed and inherit from templates; grants carry reasons. Risk and diff commands show what a policy exposes and what a change would add, while runtime decisions are audited. An agent can also launch a scoped sub-kennel for a narrower job instead of passing all its own access to a child.
+
+This is the model Kennel puts forward: **run code without first deciding whether it deserves your trust; decide what this task needs, then enforce and disclose that authority.** A permitted program can still send permitted data to a permitted destination. Kennel makes those permissions specific and reviewable, so an eager good boy can get on with the job without having the run of the house.
 
 ```bash
 apt install kennel        # Debian/Ubuntu   (dnf install kennel on Fedora/RHEL)
